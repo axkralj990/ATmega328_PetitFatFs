@@ -7,7 +7,6 @@
 #include "AK_spi.h"
 
 /* =========================JS EXAMPLE CODE============================= */
-#define _WRITE_FUNC	0
 
 /* Definitions for MMC/SDC command */
 #define CMD0	(0x40+0)	/* GO_IDLE_STATE */
@@ -97,9 +96,9 @@ DSTATUS disk_initialize (void)
 
 	init_spi();
 
-#if _WRITE_FUNC
-	if (MMC_SEL) disk_writep(0, 0);		/* Finalize write process if it is in progress */
-#endif
+//#if _WRITE_FUNC
+//	if (MMC_SEL) disk_writep(0, 0);		/* Finalize write process if it is in progress */
+//#endif
 	for (n = 100; n; n--) rcv_spi();	/* Dummy clocks */
 
 	ty = 0;
@@ -127,8 +126,7 @@ DSTATUS disk_initialize (void)
 	CardType = ty;
 	release_spi();
 
-	//return ty ? 0 : STA_NOINIT;
-	return ty;
+	return ty ? 0 : STA_NOINIT;
 }
 
 

@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------------*/
 
 #include "diskio.h"
-
+#include "USART.h"
 #include "AK_spi.h"
 
 /* =========================JS EXAMPLE CODE============================= */
@@ -168,6 +168,10 @@ DRESULT disk_readp (
 			if (buff) {	/* Store data to the memory */
 				do
 					*buff++ = rcv_spi();
+				while (--cnt);
+			} else {	/* Forward data to the outgoing stream (depends on the project) */
+			do
+				transmitByte(rcv_spi());	/* (Console output) */
 				while (--cnt);
 			}
 

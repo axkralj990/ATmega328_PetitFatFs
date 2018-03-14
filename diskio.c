@@ -2,6 +2,7 @@
 /* Low level disk I/O module skeleton for Petit FatFs (C)ChaN, 2014      */
 /*-----------------------------------------------------------------------*/
 
+#include <avr/io.h>
 #include "diskio.h"
 #include "USART.h"
 #include "AK_spi.h"

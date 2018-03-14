@@ -1,4 +1,4 @@
-diskio.d diskio.o: ../../../diskio.c \
+USART.d USART.o: A:/AVR/AK_projects/AK_libraries/USART.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,9 +10,8 @@ diskio.d diskio.o: ../../../diskio.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- ../../../diskio.h ../../../integer.h \
- A:\AVR\AK_projects\AK_libraries/USART.h ../../../AK_spi.h ../../../pff.h \
- ../../../pffconf.h
+ A:/AVR/AK_projects/AK_libraries/USART.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\setbaud.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -36,14 +35,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-../../../diskio.h:
+A:/AVR/AK_projects/AK_libraries/USART.h:
 
-../../../integer.h:
-
-A:\AVR\AK_projects\AK_libraries/USART.h:
-
-../../../AK_spi.h:
-
-../../../pff.h:
-
-../../../pffconf.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\setbaud.h:

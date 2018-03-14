@@ -16,7 +16,8 @@ void init_spi(void) {
 	/* Set MOSI and SCK output, all others input */
     DDR_SPI = (1<<DD_MOSI)|(1<<DD_SCK)|(1<<DD_SS);
     /* Enable SPI, Master, set clock rate fck/4 */
-	SPCR = ( 1<<SPE | 1<<MSTR | 1<<SPR0 | 1<<SPR1);
+	/* SPCR = ( 1<<SPE | 1<<MSTR | 1<<SPR0 | 1<<SPR1); */
+	SPCR = ( 1<<SPE | 1<<MSTR );
 	/* enable double speed SPI */
 	#if DOUBLE_SPEED_SPI
 		//SPSR = (1<<SPI2X);

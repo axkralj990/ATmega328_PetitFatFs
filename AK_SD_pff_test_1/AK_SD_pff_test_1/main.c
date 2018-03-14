@@ -12,18 +12,19 @@
 #include <string.h>
 
 #include "pff.h"
-#include "diskio.h"
 
 #include <util/delay.h>
 #include "USART.h"
 
 int main(void)
 {
-
+	
+	_delay_ms(5000);
+	
 	char byte_string[16];
 	
 	FATFS fs;
-	FRESULT mountResult, openFileResult, readFromFileResult;
+	FRESULT mountResult, openFileResult, readFromFileResult, writeToFileResult;
 	const char path2file[] = "DATALOG.TXT";
 	
 	initUSART();
@@ -47,7 +48,7 @@ int main(void)
 	utoa(openFileResult, byte_string, 10);
 	printLine(byte_string);
 	
-	UINT bytesRead = 0;
+	UINT bytesRead = 0, bytesWritten = 0;
 	
 	/*
 	char readBuff[14];
@@ -78,6 +79,39 @@ int main(void)
 	utoa(bytesRead, byte_string, 10);
 	printString("Bytes read: ");
 	printLine(byte_string);
+	
+	char writeBuff[] = "Well, let's see what is going on!";
+	writeToFileResult = pf_write(writeBuff, 36, &bytesWritten);
+	if (writeToFileResult != 0) {
+		printLine("Error writing to file.");
+		while(1);
+	}
+	pf_write(0, 0,&bytesWritten);
+	
+	_delay_ms(1000);
+	
+	openFileResult = pf_open("MYLOG.TXT");
+	if (openFileResult != 0) {
+		printLine("Error creating a new file");
+		while(1);
+	}
+	
+	/* char writeBuff2[] = "AaBbCcDdEeFf"; */
+	char writeBuff2[] = "0123456789AB";
+	for(uint8_t i=0; i<150; i++) {
+		PORTD |= (1<<PORTD2);
+		writeToFileResult = pf_write(writeBuff2, 12, &bytesWritten);
+		if (writeToFileResult != 0) {
+			printLine("Error writing to file.");
+			while(1);
+		}
+		writeToFileResult = pf_write(",", 1, &bytesWritten);
+		if (writeToFileResult != 0) {
+			printLine("Error writing to file.");
+			while(1);
+		}
+	}
+	pf_write(0, 0,&bytesWritten);
 	
     while (1) 
     {

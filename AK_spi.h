@@ -20,7 +20,7 @@ void init_spi(void) {
 	SPCR = ( 1<<SPE | 1<<MSTR );
 	/* enable double speed SPI */
 	#if DOUBLE_SPEED_SPI
-		//SPSR = (1<<SPI2X);
+		SPSR |= (1<<SPI2X);
 	#endif
 }
 
